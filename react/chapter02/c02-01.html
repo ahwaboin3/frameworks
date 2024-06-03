@@ -6,12 +6,54 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- 타켓 컨테이너 -->
+    <div id="root"></div>
+
+    <!-- React와 ReactDOM 라이브러리(개발 버전) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 바벨 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
     <script>
         //chapter02/c02-01.html
         /* JSX를 사용하는 리액트
             createElement함수는 리액트의 동작을 살펴보는 데 좋은 방법이지만 리액트 개발자들이 실제로 해야 하는 일과는 거리가 있다. 리액트를 활용해 효과적으로 일하려면 JSX라는 다른 요소가 필요하다.
-            JSX는 자바스크립트의 JS와 XML의 X를 합친 말이다. JSX는 자바스크립트 코드 안에서 바로 태그 기반의 구문을 써서 리액트 엘리먼트를 정의 할수 있게 해주는 자바스크립트 확장이다.
+            JSX는 자바스크립트의 JS와 XML의 X를 합친 말이다. JSX는 자바스크립트 코드 안에서 바로 태그 기반의 구문을 써서 리액트 엘리먼트를 정의 할 수 있게 해주는 자바스크립트 확장이다.
         */
+       /* 바벨
+        어떤 브라우저도 JSX를 지원하지 않는다. JSX와 자바스크립트 코드를 브라우저가 해석할 수 있는 코드로 변환해줄 수단이 필요하다.
+        이런 변환 과정을 컴파일링이라고 부르며 바벨(https://babeljs.io/)이 그런 일을 해준다.
+        가장 간단한 방법은 바벨 CDN링크를 직접 html에 포함시키는 것이다.
+        이렇게 하면 타입이 "text/babel"인 script블록을 바벨이 컴파일 해준다
+       */
+    </script>
+    <script type="text/babel">
+        function Menu(props){
+            return (
+                <article>
+                    <header>
+                        <h1>{props.title}</h1>
+                    </header>
+                </article>
+            )
+        }
+        //props에서 title를 구조분해 할 수 있다.
+        //const {a,b}={a:1,b:2}
+        function Menu1({title,subTitle}){
+            return (
+                <article>
+                    <header>
+                        <h1>{title}</h1>
+                        <h2>{subTitle}</h2>
+                    </header>
+                </article>
+            )
+        }
+        ReactDOM.render(
+            [<Menu title="제목1"/>,<Menu title="제목2"/>],
+            document.querySelector("#root")
+        )
     </script>
 </body>
 </html>
