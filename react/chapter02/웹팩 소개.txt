@@ -1,0 +1,11 @@
+웹팩 소개.txt
+
+Node.js 설치
+컴퓨터 OS에서 javascript의 실행 환경
+
+1. https://nodejs.org/en 접속
+2. Download node.js 클릭
+
+설치
+
+native node.js modules 설치 체크
