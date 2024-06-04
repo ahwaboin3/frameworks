@@ -1,4 +1,4 @@
-import {StarRating} from "./components/StarRating.js"
+import StarRating from "./components/StarRating.js"
 
 function App() {
   return (
