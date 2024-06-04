@@ -1,5 +1,7 @@
 npx create-react-app my-app
 
+npx create-react-app my-app-use-state
+
 npx - npm을 더 쉽게 설치하고 관리하도록 도와주는 도구이다.
 
 npm - node pacakage module
