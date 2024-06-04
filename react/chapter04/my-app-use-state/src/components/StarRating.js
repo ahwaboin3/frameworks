@@ -1,5 +1,6 @@
 // src/components/StarRating.js
 import {useState} from "react";
+im
 
 const createArray=length=>[...Array(length)]
 
