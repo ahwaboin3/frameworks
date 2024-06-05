@@ -28,24 +28,28 @@ import StarRating from "./components/StarRating.js"
 import { useState } from 'react';
 import colorData from "./color-data.json"
 import ColorList from './components/ColorList.js';
+import AddColorForm from './components/AddColorForm.js';
 
 function App() {
   const [colors,setColors]=useState(colorData.color);
-  return <ColorList 
-    colors={colors} 
-    onRemoveColor={id=>{
-      //매개변수로 넘어온 id값을 사용해 색을 제거 한다
-      const newColor=colors.filter(color=>color.id!==id)
-      setColors(newColor)
-    }}
-    onRateColor={(id,rating)=>{
-      //배열에서 id 값이 일치하는 것을 찾아 rating값을 변경하여 새 배열로 만들고 새 배열을 훅을 통해 대입한다.
-      const newColor=colors.map(color=>
-        color.id===id?{...color,rating}:color
-      )
-      setColors(newColor)
-    }}
-  />
+  return <>
+    <AddColorForm />
+    <ColorList 
+      colors={colors} 
+      onRemoveColor={id=>{
+        //매개변수로 넘어온 id값을 사용해 색을 제거 한다
+        const newColor=colors.filter(color=>color.id!==id)
+        setColors(newColor)
+      }}
+      onRateColor={(id,rating)=>{
+        //배열에서 id 값이 일치하는 것을 찾아 rating값을 변경하여 새 배열로 만들고 새 배열을 훅을 통해 대입한다.
+        const newColor=colors.map(color=>
+          color.id===id?{...color,rating}:color
+        )
+        setColors(newColor)
+      }}
+    />
+  </>
 }
 
 export default App;
