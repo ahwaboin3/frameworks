@@ -26,9 +26,12 @@ import colorData from "./color-data.json"
 import ColorList from './components/ColorList.js';
 
 function App() {
-  const [colors]=useState(colorData.color);
-  console.log(colors)
-  return <ColorList colors={colors} onRemoveColor={(id)=>{console.log(id)}}/>
+  const [colors,setColors]=useState(colorData.color);
+  return <ColorList colors={colors} onRemoveColor={id=>{
+      //매개변수로 넘어온 id값을 사용해 색을 제거 한다
+      const newColor=colors.filter(color=>color.id!==id)
+      setColors(newColor)
+    }}/>
 }
 
 export default App;
