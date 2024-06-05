@@ -8,7 +8,7 @@ import StarRating from "./StarRating"
 /* 각 색의 이름 옆에 해당 색을 제거하는 삭제 버튼을 덧붙인다. */
 import { FaTrash } from "react-icons/fa";
 
-export default function Color({id,title,color,rating,onRemove}){
+export default function Color({id,title,color,rating,onRemove,onRate=f=>f}){
     return(
         <section>
             <h1>{title}</h1>
@@ -16,7 +16,7 @@ export default function Color({id,title,color,rating,onRemove}){
                 <FaTrash />
             </button>
             <div style={{height:50, backgroundColor:color}}></div>
-            <StarRating selectedStars={rating}/>
+            <StarRating selectedStars={rating} onRate={rating=>onRate(id,rating)}/>
         </section>
     )
 }
