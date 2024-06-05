@@ -27,7 +27,8 @@ import ColorList from './components/ColorList.js';
 
 function App() {
   const [colors]=useState(colorData.color);
-  return <ColorList colors={colors} />
+  console.log(colors)
+  return <ColorList colors={colors} onRemoveColor={(id)=>{console.log(id)}}/>
 }
 
 export default App;

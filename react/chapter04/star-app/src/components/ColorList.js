@@ -1,16 +1,24 @@
 //src/components/ColorList.js
 
-import StarRating from "./StarRating"
+import Color from "./Color.js"
 
-export default function ColorList({colors=[]}){
+// function onRemoveColor(id){
+//     console.log("ColorList onRemoveColor Called",id)
+// }
+
+export default function ColorList(
+    {colors=[],onRemoveColor}
+){
+   if(!colors.length)
+       return <div>표시할 색이 없습니다.</div>
    return (
     <div>
         {colors.map(color=>(
-            <section>
-                <h1>{color.title}</h1>
-                <div style={{height:50, backgroundColor:color.color}}></div>
-                <StarRating selectedStars={color.rating}/>
-            </section>
+            <Color 
+                key={color.id} 
+                {...color}
+                onRemove={onRemoveColor}
+            />
         ))}
     </div>
    ) 
