@@ -5,9 +5,18 @@
 */
 import {useContext} from "react"
 import {ColorContext} from ".."
+import Color from "./Color"
 
 export default function ColorListContext(){
     const {colors} =useContext(ColorContext)
     console.log(colors)
-    return <h3>ColorListContext</h3>
+    const colorsArr=colors.colors
+    if(!colorsArr.length) return <div>No Colors Listed. (Add a Color)</div>
+    return (
+        <div className="color-list">
+            {
+                colorsArr.map(color=><Color key={color.id} {...color} />)
+            }
+        </div>
+    )
 }
