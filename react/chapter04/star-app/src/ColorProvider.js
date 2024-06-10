@@ -4,6 +4,8 @@
 */
 import {useState, createContext, useContext} from "react"
 import colorData from "./color-data.json"
+// console.log(colorData.colors)
+// console.log(colorData.colors.length)
 
 const ColorContext=createContext()
 
@@ -13,12 +15,14 @@ const ColorContext=createContext()
 export const useColors=()=>useContext(ColorContext)
 
 export default function ColorProvider({children}){
-    const [colors,setColors]=useState(colorData)
+    // const colorArr=colorData.colors
+    const [colors,setColors]=useState(colorData.colors)
     /* 
     setColors를 콘텍스트에 추가하면 다른 개발자가 나중에 이 함수를 사용하면서 실수를 할 여지가 있다. colors 배열의 값을 바꿀 수 있는 방법은 사용자가 색을 추가하거나, 색을 제거하거나, 색에 평점을 메기는 경우 이 3가지이다. 각각의 경우에 대한 함수를 콘텍스트에 추가하는 편이 더 나아보인다.
     */
     // console.log(colors.colors.length)
-    let colorsCount=colors.colors.length
+    let colorsCount=colors.length
+    // let colorsArr=colors.colors
     const addColor=(title,color)=>{
         setColors([
             ...colors,
