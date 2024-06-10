@@ -1,5 +1,9 @@
 // src/AppContext.js
 
+import ColorListContext from "./components/ColorListContext";
+
 export default function AppContext(){
-    return <h1>AppContext</h1>
+    return (
+        <ColorListContext />
+    )
 }
