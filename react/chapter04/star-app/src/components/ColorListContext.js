@@ -6,6 +6,7 @@
 import {useContext} from "react"
 import {ColorContext} from ".."
 import Color from "./Color"
+import ColorWithContext from "./ColorWithContext"
 
 export default function ColorListContext(){
     const {colors} =useContext(ColorContext)
