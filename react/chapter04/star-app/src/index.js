@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { createContext } from 'react';
 import colors from "./color-data.json"
 import AppContext from './AppContext';
+import ColorProvider from './ColorProvider';
 
 /* 
   리액트 콘텍스트
@@ -38,9 +39,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <ColorContext.Provider value={{colors}}>
-      <AppContext />
-    </ColorContext.Provider>
+    <ColorProvider>
+      <AppContext/>
+    </ColorProvider>
   </React.StrictMode>
 );
 

@@ -14,6 +14,7 @@ export default function ColorListContext(){
     if(!colorsArr.length) return <div>No Colors Listed. (Add a Color)</div>
     return (
         <div className="color-list">
+            <h3>ColorList</h3>
             {
                 colorsArr.map(color=><Color key={color.id} {...color} />)
             }
