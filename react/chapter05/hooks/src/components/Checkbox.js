@@ -15,6 +15,7 @@ export default function Checkbox(){
                 value={checked}
                 onChange={()=>setChecked(checked=>!checked)}
             />
+            {checked?"checked":"not checked"}
         </>
     )
 }
