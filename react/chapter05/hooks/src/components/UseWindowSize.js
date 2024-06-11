@@ -1,5 +1,5 @@
 // components/UseWindowSize.js
-/* 창의 크리가 바뀐 경우 엘리먼트의 너비와 높이를 얻고 싶은 경우 */
+/* 창의 크기가 바뀐 경우 엘리먼트의 너비와 높이를 얻고 싶은 경우 */
 import {useState, useLayoutEffect} from "react"
 export default function UseWindowSize(){
     const [width,setWidth]=useState(0)
