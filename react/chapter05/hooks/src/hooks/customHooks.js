@@ -16,13 +16,21 @@ const goodbyeChimePlay=()=>{
 export const useJazzyNews=()=>{
     const [posts,setPosts]=useState([]);
     const addPost=post=>setPosts(allPosts=>[post,...allPosts])
+    // useEffect(()=>{
+    //     newsFeedSubscribe(addPost)
+    //     welcomeChimePlay()
+    //     return ()=>{
+    //         newsFeedUnsubscribe(addPost)
+    //         goodbyeChimePlay()
+    //     }
+    // },[])
+    /* 기능을 여러 useEffect로 나눠 담는 것이 보통은 좋은 생각입니다.  */
     useEffect(()=>{
         newsFeedSubscribe(addPost)
-        welcomeChimePlay()
-        return ()=>{
-            newsFeedUnsubscribe(addPost)
-            goodbyeChimePlay()
-        }
+        return ()=>newsFeedUnsubscribe(addPost)
     },[])
-    /*  */
+    useEffect(()=>{
+        welcomeChimePlay()
+        return ()=>goodbyeChimePlay()
+    })
 }
