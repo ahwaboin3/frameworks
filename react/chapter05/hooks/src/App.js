@@ -4,14 +4,12 @@
 
 import Checkbox from "./components/Checkbox";
 import DependencyRelation from "./components/DependencyRelation";
+import NewsFeed from "./components/NewsFeed";
 
 function App() {
   return (
     <div className="App">
-      <Checkbox />
-      <div>
-        <DependencyRelation />
-      </div>
+      <NewsFeed />
     </div>
   );
 }
