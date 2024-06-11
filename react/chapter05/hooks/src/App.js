@@ -3,11 +3,15 @@
 */
 
 import Checkbox from "./components/Checkbox";
+import DependencyRelation from "./components/DependencyRelation";
 
 function App() {
   return (
     <div className="App">
       <Checkbox />
+      <div>
+        <DependencyRelation />
+      </div>
     </div>
   );
 }
