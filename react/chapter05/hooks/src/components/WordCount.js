@@ -24,7 +24,6 @@ function WordCount({children=""}){
     /* words 배열은 children 속성에 의존한다. children이 바뀌면 그에 맞춰 words의 값도 재계산해야 한다. 이 코드에서 useMemo는 컴포넌트가 최초로 렌더링 될 때와 children 속성이 바뀔 때 words를 다시 계산한다.
     useMemo 훅은 리액트 애플리케이션을 만들 때 이해해야할 훌룡한 함수다.
      */
-
     return (
         <>
             <p>{children}</p>
