@@ -5,11 +5,12 @@
 import Checkbox from "./components/Checkbox";
 import DependencyRelation from "./components/DependencyRelation";
 import NewsFeed from "./components/NewsFeed";
+import { useAnyKeyToRender } from "./hooks/DeepEffect";
 
 function App() {
+  useAnyKeyToRender()
   return (
     <div className="App">
-      <NewsFeed />
     </div>
   );
 }
