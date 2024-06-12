@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import App2 from './App2';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from "react-router-dom"
 
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 BrowserRouter를 Router로 임포트 했다. */
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <App2 />
+    </Router>
   </React.StrictMode>
 );
 
