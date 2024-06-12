@@ -1,14 +1,19 @@
-//src/App5.js
+//src/App6.js
+
 import {useState} from "react"
-import PureCat from "./components/Cat2"
-/* 이제 새 고양이 이름을 추가하면 콘솔에서 추가된 PureCat컴포넌트만 렌더링 된다. */
-export default function App5(){
+import Cat3 from "./components/Cat3"
+export default function App6(){
     const [cats,setCats]=useState(["Biscuit","Jungle","Outlaw"])
     return (
         <>
             {
                 cats.map((name,i)=>
-                    <PureCat key={i} name={name}/>)
+                    <Cat3 
+                        key={i} 
+                        name={name}
+                        meow={name=>console.log(`${name} has meowed`)}
+                    />
+                )
             }
             <button onClick={()=>setCats([...cats,prompt("Name a cat")])}>Add a Cat</button>
         </>
