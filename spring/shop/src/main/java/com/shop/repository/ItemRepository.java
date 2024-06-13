@@ -29,4 +29,7 @@ public interface ItemRepository extends JpaRepository<Item, Long>{
 	//매개변수로는 검색할 때 사용할 상품명 변수를 넘겨줍니다.
 	List<Item> findByItemNm(String itemNm);
 	
+	//상품을 삼품명과 상품 상세 설명을 OR 조건을 이용하여 조회하는 쿼리 메소드]
+	List<Item> findByItemNmOrItemDetail(String itemNm,String itemDetail);
+	
 }
