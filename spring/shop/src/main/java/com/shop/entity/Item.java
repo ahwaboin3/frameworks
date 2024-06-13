@@ -11,6 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,6 +35,7 @@ public class Item {
 	//GenerationType.Auto - JPA 구현체가 자동으로 생성 전략 결정
 	//MySql 데이터베이스의 경우 auto_increment를 사용하여 기본키 생성
 	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	//@Column 속성
 	//추가 속성 name - 필드와 매핑할 컬럼의 이름 설정, 기본값: 객체의 필드 이름
 	@Column(name="item_id")
