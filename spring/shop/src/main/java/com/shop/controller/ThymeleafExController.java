@@ -67,6 +67,22 @@ public class ThymeleafExController {
 		model.addAttribute("itemDtoList",itemDtoList);
 		return "tl/tlEx04";
 	}
+	
+	@GetMapping(value="/ex05")
+	public String tlEx05(Model model) {
+		return "tl/tlEx05";
+	}
+	@GetMapping(value="/putdata")
+	public String getData(Model model,String data) {
+		System.out.println(data);
+		return "tl/tlEx05";
+	}
+	@GetMapping(value="/ex06")
+	public String tlEx06(
+		Model model,String param1,String param2) {
+		System.out.println(param1+" "+param2);
+		return "tl/tlEx05";
+	}
 }
 
 
