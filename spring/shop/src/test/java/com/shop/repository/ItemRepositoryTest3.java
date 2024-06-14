@@ -42,5 +42,16 @@ class ItemRepositoryTest3 {
 			System.out.println(item);
 		}
 	}
+	
+	@Test
+	@DisplayName("nativeQuery 속성을 이용한 상품 조회 테스트")
+	public void findByItemDetailByNativeTest() {
+		this.createItemList();
+		List<Item> itemList=
+			itemRepository.findByItemDetailByNative();
+		for(Item item:itemList) {
+			System.out.println(item);
+		}
+	}
 
 }
