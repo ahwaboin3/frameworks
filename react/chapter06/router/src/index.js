@@ -12,7 +12,7 @@ BrowserRouter를 Router로 임포트 했다. */
 root.render(
   <React.StrictMode>
     <Router>
-      <App2 />
+      <App />
     </Router>
   </React.StrictMode>
 );
