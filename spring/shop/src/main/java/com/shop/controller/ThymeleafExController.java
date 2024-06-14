@@ -74,7 +74,7 @@ public class ThymeleafExController {
 	}
 	@GetMapping(value="/putdata")
 	public String getData(Model model,String data) {
-		System.out.println(data);
+		model.addAttribute("data",data);
 		return "tl/tlEx05";
 	}
 	@GetMapping(value="/ex06")
