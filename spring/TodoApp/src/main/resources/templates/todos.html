@@ -26,6 +26,7 @@
 							<div class="form-outline">
 								<input id="put-todo" type="text" class="form-control"
 									placeholder="new todo..." name="content"
+									required
 								>
 							</div>
 						</div>
@@ -49,7 +50,9 @@
 								<td th:text="${todo.completed}"></td>
 								<td>
 									<button class="btn btn-success">Finished</button>
-									<button class="btn btn-danger">Delete</button>
+									<a th:href="@{/delete/{id}(id=${todo.id})}">
+										<button class="btn btn-danger">Delete</button>
+									</a>
 								</td>
 							</tr>
 						</tbody>
