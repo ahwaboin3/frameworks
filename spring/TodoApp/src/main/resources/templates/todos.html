@@ -7,6 +7,16 @@
 <body>
 	<!-- templates/todos.html -->
 	<h1>Todos</h1>
+	
+	<!-- 
+		get방식 요청: 주소창에 데이터가 노출 
+		post방식 요청: 주소창에 데이터가 노출 안됨
+	-->
+	<form th:action="@{/put}" method="post">
+		<input name="content" placeholder="put todo...">
+		<input type="submit">
+	</form>
+	
 	<div th:each="todo:${todos}">
 		<div th:text="${todo.id}"></div>
 		<div th:text="${todo.content}"></div>
