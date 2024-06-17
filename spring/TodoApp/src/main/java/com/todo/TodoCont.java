@@ -1,7 +1,5 @@
 package com.todo;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,13 +24,21 @@ public class TodoCont {
 		model.addAttribute("todos",tService.getTodos());
 		return "todos";
 	}
-	
+	//get방식 요청: 주소창에 데이터가 노출 
+	//post방식 요청: 주소창에 데이터가 노출 안됨
 	@PostMapping("/put")
-//	public String putTodo(String content) {
+//	public String putTodo(@RequestParam TodoEntity tEntity) {
 	public String putTodo(TodoEntity tEntity) {
-//		System.out.println(content);
-		System.out.println(tEntity);
+//		System.out.println(tEntity);
+		tEntity.setCompleted(false);
+		tService.putTodo(tEntity);
 		return "redirect:/";
 	}
 	
 }
+
+
+
+
+
+
