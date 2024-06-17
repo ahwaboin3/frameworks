@@ -20,6 +20,11 @@ public class TodoService {
 	public void putTodo(TodoEntity tEntity) {
 		tRepo.save(tEntity);
 	}
+	
+	//받은 id 값으로 삭제 하기
+	public void deleteTodo(Integer id) {
+		tRepo.deleteById(id);
+	}
 
 }
 

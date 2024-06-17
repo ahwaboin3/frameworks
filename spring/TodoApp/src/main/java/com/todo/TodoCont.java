@@ -39,8 +39,8 @@ public class TodoCont {
 	
 	@GetMapping("/delete/{id}")
 	public String deleteTodo(@PathVariable Integer id) {
-		System.out.println("id------------------------------");
 		System.out.println(id);
+		tService.deleteTodo(id);
 		return "redirect:/";
 	}
 	
