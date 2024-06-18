@@ -44,9 +44,13 @@ public class TodoCont {
 		return "redirect:/";
 	}
 	@GetMapping("/update/{id}")
-	public String updateTodo(@PathVariable Integer id) {
-		System.out.println(id);
-//		tService.updateTodo(id);
+	public String updateTodo(@PathVariable Integer id,
+			Model model) {
+//		System.out.println(id);
+		//id값을 이용하여 한개의 todo 가져오기
+		TodoEntity tEntity=tService.getTodo(id);
+//		System.out.println(tEntity);
+		model.addAttribute("todo",tEntity);
 		return "update-todo";
 	}
 	
