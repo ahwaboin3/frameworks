@@ -28,10 +28,10 @@ public class TodoCont {
 	}
 	//get방식 요청: 주소창에 데이터가 노출 
 	//post방식 요청: 주소창에 데이터가 노출 안됨
-	@RequestMapping("/put")
+	@PostMapping("/put")
 //	public String putTodo(@RequestParam TodoEntity tEntity) {
 	public String putTodo(TodoEntity tEntity) {
-		System.out.println(tEntity);
+//		System.out.println(tEntity);
 		if(tEntity.getCompleted()==null) {
 			tEntity.setCompleted(false);
 		}
@@ -56,13 +56,13 @@ public class TodoCont {
 		return "update-todo";
 	}
 	
-	@RequestMapping("/updateCompleted")
+	@GetMapping("/updateCompleted")
 	public String updateCompleted(TodoEntity tEntity) {
-		System.out.println(tEntity);
+//		System.out.println(tEntity);
 		//completed 속성만 반전 시켜서 디비에 수정 하기
 		tEntity.setCompleted(!tEntity.getCompleted());
-		System.out.println(tEntity);
-//		tService.putTodo(tEntity);
+//		System.out.println(tEntity);
+		tService.putTodo(tEntity);
 		return "redirect:/";
 	}
 	

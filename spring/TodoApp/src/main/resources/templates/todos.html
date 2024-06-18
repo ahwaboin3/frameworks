@@ -45,11 +45,15 @@
 					<tbody>
 						<tr th:each="todo:${todos}">
 							<td th:text="${todo.id}"></td>
-							<td th:text="${todo.content}"></td>
+							<td class="text-decoration-line-through" th:if="${todo.completed}" 
+								th:text="${todo.content}"></td>
+							<td th:unless="${todo.completed}" 
+								th:text="${todo.content}"></td>
 							<td>
 								<a 
 									th:href="@{/updateCompleted(id=${todo.id},content=${todo.content},completed=${todo.completed})}">
-									<button class="btn btn-success">Done</button>
+									<button th:if="${todo.completed}" class="btn btn-success">Not Done</button>
+									<button th:unless="${todo.completed}" class="btn btn-success">Done</button>
 								</a>
 								<a th:href="@{/update/{id}(id=${todo.id})}">
 									<button class="btn btn-warning">Update</button>
