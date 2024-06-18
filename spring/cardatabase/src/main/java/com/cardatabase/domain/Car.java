@@ -1,4 +1,4 @@
-package com.cardatabase.cardatabase.domain;
+package com.cardatabase.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,17 +31,19 @@ public class Car {
 	//지연 검색을 의미하는 LAZY
 	//지연 검색은 데이터베이스에서 소유자를 검색하면 필요할 때에 해당 소유자와
 	//연관된 모든 자동차를 검색한다는 뜻이다.
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="owner")
 	private Owner owner;
 	
 	public Car(String brand, String model, String color, 
-			String registerNumber, int year, int price) {
+			String registerNumber, int year, int price,
+			Owner owner) {
 		this.brand = brand;
 		this.model = model;
 		this.color = color;
 		this.registerNumber = registerNumber;
 		this.year = year;
 		this.price = price;
+		this.owner=owner;
 	}
 }

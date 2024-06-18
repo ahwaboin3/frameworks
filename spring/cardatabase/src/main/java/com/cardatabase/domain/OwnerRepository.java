@@ -1,4 +1,4 @@
-package com.cardatabase.cardatabase.domain;
+package com.cardatabase.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
