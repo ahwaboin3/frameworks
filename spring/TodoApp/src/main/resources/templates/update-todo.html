@@ -11,7 +11,7 @@
 	<div class="justify-content-center align-items-venter h-100">
 		<div class="card rounded-3">
 			<div class="card-body p-4">
-				<h1 class="text-center my-3 pb-3">Todo App Update</h1>
+				<h1 class="text-center my-3 pb-3">Todo Update</h1>
 				
 				<form 
 					th:action="@{/put}" method="post"
@@ -23,7 +23,7 @@
 							 name="id" th:value="${todo.id}"
 							>
 							<input type="hidden" class="form-control"
-							 name="id" th:value="${todo.completed}"
+							 name="completed" th:value="${todo.completed}"
 							>
 							<input id="put-todo" type="text" class="form-control"
 							 name="content" th:value="${todo.content}" required
