@@ -20,14 +20,17 @@ function App() {
       })
       .catch(err=>console.error(err))
   },[])
-
-  return (
-    <div className="App">
-      <p>Temperature: {temp} &#8451;</p>
-      <p>Description: {desc}</p>
-      <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} />
-    </div>
-  );
+  if(isReady){
+    return (
+      <div className="App">
+        <p>Temperature: {temp} &#8451;</p>
+        <p>Description: {desc}</p>
+        <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} />
+      </div>
+    );
+  }else{
+    return <div className="App">Loading...</div>
+  }
 }
 
 export default App;
