@@ -1,1 +1,3 @@
 npx create-react-app weatherapp
+
+npx create-react-app restgithub
