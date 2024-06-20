@@ -1,12 +1,15 @@
 //component/Carlist.js
-import {useState,useEffect} from "react"
+import { useState,useEffect } from "react"
 import { SERVER_URL } from "./constants"
-import {DataGrid} from "@mui/x-data-grid"
+import { DataGrid } from "@mui/x-data-grid"
+import { Snackbar } from "@mui/material"
 
 function Carlist(){
     //REST API에서 가져온 자동차 정보를 담을 상태 객체가 필요하다
     //비어 있는 배열을 기본값으로 cars라는 상태를 선언한다
     const [cars,setCars]=useState([])
+    //SnackBar컴포넌의 open프롭 값은 부울이며, 이 값이 true면 컴포넌트가 표시된다. SnackBar컴포넌트의 표시 여부를 처리하기 위해 open이라는 상태를 선언한다.
+    const [open,setOpen]=useState(false)
     
     //useEffect 훅에서 fetch를 실행한다
     //fetch는 web server에 요청을 보내는 함수 - AJAX
@@ -41,11 +44,21 @@ function Carlist(){
         },
     ]
     const onDelClick=(url)=>{
-        // console.log(url)
-        fetch(url,{method:"delete"})
+        //delete 버튼을 눌렀을 때 확인 대화상자를 표시하는 기능이 있으면 자동차를 실수로 삭제하는 일이 없어 좋을 것이다. window객체의 confirm메서드로 이 기능을 구현할 수 있다.
+        if(window.confirm("Are you sure to delete?")){
+            // console.log(url)
+            fetch(url,{method:"delete"})
             //삭제후에 새로운 목록으로 렌더링
-            .then(()=>fetchCars())
+            .then((response)=>{
+                if(response.ok){
+                    fetchCars()
+                    setOpen(true)
+                }else{
+                    alert("Something went wrong!")
+                }
+            })
             .catch(err=>console.error(err))
+        }
     }
         
     //서버 주소 상수에서 목록을 가져오는 함수
@@ -64,7 +77,18 @@ function Carlist(){
                 columns={columns} 
                 rows={cars}
                 getRowId={row=>row._links.self.href}
-                />
+                //표에서 아무 행이나 클릭하면 그 행이 선택된다
+                //다음과 같이 표의 disableSelectionOnClick프롭을 true로 설정하면 이 동작을 비활성화할 수 있다
+                disableRowSelectionOnClick={true}
+            />
+            <Snackbar
+                //autoHideDuration프롭은 onClose함수가 자동으로 호출되고 메시지가 사라지는 시간을 밀리초 단위로 정의한다.
+                //message프롭은 표시될 메시지를 정의한다.
+                open={open}
+                autoHideDuration={2000}
+                onClose={()=>setOpen(false)}
+                message="Car deleted"
+            />
         </div>
     )
 }
