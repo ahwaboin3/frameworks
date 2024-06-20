@@ -3,6 +3,7 @@ import { Dialog,DialogTitle,DialogContent,DialogActions,
     Button, TextField, Stack} from '@mui/material';
 import { useState } from 'react';
 import { SERVER_URL } from './constants';
+import Transition from './DownSlide';
 
 function AddCar({fetchCars}){
     const[open,setOpen]=useState(false)
@@ -61,7 +62,11 @@ function AddCar({fetchCars}){
             <Button 
                 variant="contained"
                 onClick={handleClickOpen}>New Car</Button>
-            <Dialog open={open} onClose={handleClose}>
+            <Dialog 
+                open={open} 
+                onClose={handleClose}
+                TransitionComponent={Transition}
+            >
                 <DialogTitle>New car</DialogTitle>
                 <DialogContent>
                     <Stack spacing={1} mt={1}>
