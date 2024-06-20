@@ -3,6 +3,7 @@ import { useState,useEffect } from "react"
 import { SERVER_URL } from "./constants"
 import { DataGrid } from "@mui/x-data-grid"
 import { Snackbar } from "@mui/material"
+import AddCar from "./AddCar"
 
 function Carlist(){
     //REST API에서 가져온 자동차 정보를 담을 상태 객체가 필요하다
@@ -72,7 +73,8 @@ function Carlist(){
                 .catch(err=>console.log(err))
     }
     return(
-        <div style={{width:'100%'}}>
+        <div>
+            <AddCar fetchCars={fetchCars} />
             <DataGrid 
                 columns={columns} 
                 rows={cars}
