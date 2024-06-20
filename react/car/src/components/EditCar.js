@@ -1,8 +1,9 @@
 //components/EditCar.js
 
-import { Dialog, DialogContent, DialogTitle } from "@mui/material"
+import { Dialog, DialogContent, DialogTitle, DialogActions,
+    Button, IconButton, Stack, TextField} from "@mui/material"
 import { useState } from "react"
-import { SERVER_URL } from './constants';
+import {Edit} from '@mui/icons-material';
 
 function EditCar({fetchCars,data}){
     const[open,setOpen]=useState(false)
@@ -11,15 +12,18 @@ function EditCar({fetchCars,data}){
         year:"",price:""
     })
     const handleClickOpen=()=>{
+        // console.log(data)
+        setCar({
+            brand:data.row.brand,
+            model:data.row.model,
+            color:data.row.color,
+            year:data.row.year,
+            price:data.row.price,
+        })
         setOpen(true)
-        console.log(data)
     }
     const handleClose=()=>{
         setOpen(false)
-        setCar({
-            brand: "",model: "",color: "",
-            year: "",price: "",
-          });
     }
 
     const handleChange=(event)=>{
@@ -28,12 +32,14 @@ function EditCar({fetchCars,data}){
 
     //자동차를 업데이트하고 모달 폼을 닫음
     const handleSave=()=>{
-
+        // console.log(car)
+        updateCar(data.id)
+        handleClose()
     }
 
     //자동차 업데이트
     const updateCar=(link)=>{
-        fetch(SERVER_URL+"/api/cars",
+        fetch(link,
             {
                 method:"PUT",
                 headers:{"Content-Type":"application/json"},
@@ -53,25 +59,54 @@ function EditCar({fetchCars,data}){
 
     return(
         <div>
-            <button onClick={handleClickOpen}>Edit</button>
+            <IconButton onClick={handleClickOpen}>
+                <Edit color="info"></Edit>
+            </IconButton>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Edit car</DialogTitle>
                 <DialogContent>
-                    <input placeholder="Brand" name="brand"
-                            value={car.brand} onChange={handleChange} />
-                    <br/>
-                    <input placeholder="Model" name="model"
-                        value={car.model} onChange={handleChange} />
-                    <br/>
-                    <input placeholder="Color" name="color"
-                        value={car.color} onChange={handleChange} />
-                    <br/>
-                    <input placeholder="Year" name="year"
-                        value={car.year} onChange={handleChange} />
-                    <br/>
-                    <input placeholder="Price" name="price"
-                        value={car.price} onChange={handleChange} />
+                    <Stack>
+                        <TextField
+                            label="Brand"
+                            name="brand"
+                            variant="standard"
+                            value={car.brand}
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            label="Model"
+                            name="model"
+                            variant="standard"
+                            value={car.model}
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            label="Color"
+                            name="color"
+                            variant="standard"
+                            value={car.color}
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            label="Year"
+                            name="year"
+                            variant="standard"
+                            value={car.year}
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            label="Price"
+                            name="price"
+                            variant="standard"
+                            value={car.price}
+                            onChange={handleChange}
+                        />
+                    </Stack>
                 </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleSave}>Save</Button>
+                </DialogActions>
             </Dialog>
         </div>
     )

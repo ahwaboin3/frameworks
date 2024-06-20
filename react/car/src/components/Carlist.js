@@ -1,10 +1,12 @@
 //component/Carlist.js
 import { useState,useEffect } from "react"
 import { SERVER_URL } from "./constants"
-import { DataGrid } from "@mui/x-data-grid"
-import { Snackbar } from "@mui/material"
+import { DataGrid} from "@mui/x-data-grid"
+import { IconButton, Snackbar, Stack } from "@mui/material"
 import AddCar from "./AddCar"
 import EditCar from "./EditCar"
+import CustomToolbar from "./CustomToolbar"
+import {Delete} from "@mui/icons-material"
 
 function Carlist(){
     //REST API에서 가져온 자동차 정보를 담을 상태 객체가 필요하다
@@ -50,10 +52,9 @@ function Carlist(){
             //셀에 더 복잡한 내용을 넣어햐 할 때는 셀의 내용이 렌더링되는 방법을 정의하는 renderCell프롭을 이용하면 된다
             //renderCell로 button요소를 추가 한다
             renderCell:(row)=>
-                <button
-                    onClick={()=>onDelClick(row.id)}>
-                    Delete
-                </button>
+                <IconButton onClick={()=>onDelClick(row.id)}>
+                    <Delete color="warning" />
+                </IconButton>
         },
     ]
     const onDelClick=(url)=>{
@@ -86,7 +87,9 @@ function Carlist(){
     }
     return(
         <div>
-            <AddCar fetchCars={fetchCars} />
+            <Stack m={2}>
+                <AddCar fetchCars={fetchCars} />
+            </Stack>
             <DataGrid 
                 columns={columns} 
                 rows={cars}
@@ -94,6 +97,7 @@ function Carlist(){
                 //표에서 아무 행이나 클릭하면 그 행이 선택된다
                 //다음과 같이 표의 disableSelectionOnClick프롭을 true로 설정하면 이 동작을 비활성화할 수 있다
                 disableRowSelectionOnClick={true}
+                components={{toolbar:CustomToolbar}}
             />
             <Snackbar
                 //autoHideDuration프롭은 onClose함수가 자동으로 호출되고 메시지가 사라지는 시간을 밀리초 단위로 정의한다.

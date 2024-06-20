@@ -1,7 +1,5 @@
 import { Toolbar,AppBar, Typography } from '@mui/material';
-import './App.css';
 import Carlist from './components/Carlist';
-import AddCar from './components/AddCar';
 
 function App() {
   return (
