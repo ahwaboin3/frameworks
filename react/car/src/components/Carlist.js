@@ -4,6 +4,7 @@ import { SERVER_URL } from "./constants"
 import { DataGrid } from "@mui/x-data-grid"
 import { Snackbar } from "@mui/material"
 import AddCar from "./AddCar"
+import EditCar from "./EditCar"
 
 function Carlist(){
     //REST API에서 가져온 자동차 정보를 담을 상태 객체가 필요하다
@@ -31,7 +32,18 @@ function Carlist(){
         {field:'year',headerName:'Year',width:150},
         {field:'price',headerName:'Price',width:150},
         {
-            field:"_links.self.href",
+            field:"edit",
+            headerName:'',
+            sortable:false,
+            filterable:false,
+            renderCell:(row)=>
+                <EditCar
+                    data={row}
+                    fetchCars={fetchCars}
+                />
+        },
+        {
+            field:"delete",
             headerName:'',
             sortable:false,
             filterable:false,
@@ -41,7 +53,7 @@ function Carlist(){
                 <button
                     onClick={()=>onDelClick(row.id)}>
                     Delete
-                </button>,
+                </button>
         },
     ]
     const onDelClick=(url)=>{
