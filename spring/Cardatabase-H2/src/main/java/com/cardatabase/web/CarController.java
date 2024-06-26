@@ -9,7 +9,7 @@ import com.cardatabase.domain.Car;
 import com.cardatabase.domain.CarRepository;
 
 //@RestController 어노테이션은 이 클래스가 RESTful 웹 서비스의
-//컨트롤러가 되도록 지저어한다.
+//컨트롤러가 되도록 지정한다.
 @RestController
 public class CarController {
 	
